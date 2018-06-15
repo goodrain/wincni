@@ -1,0 +1,55 @@
+{
+    "AdditionalArgs": [
+        {
+            "Name": "EndpointPolicy",
+            "Value": {
+                "ExceptionList": [
+                    "192.168.0.0/16",
+                    "11.0.0.0/8",
+                    "10.124.24.0/23"
+                ],
+                "Type": "OutBoundNAT"
+            }
+        },
+        {
+            "Name": "EndpointPolicy",
+            "Value": {
+                "DestinationPrefix": "11.0.0.0/8",
+                "NeedEncap": true,
+                "Type": "ROUTE"
+            }
+        },
+        {
+            "Name": "EndpointPolicy",
+            "Value": {
+                "DestinationPrefix": "10.124.24.196/32",
+                "NeedEncap": true,
+                "Type": "ROUTE"
+            }
+        }
+    ],
+    "capabilities": {
+        "portMappings": true
+    },
+    "cniVersion": "0.2.0",
+    "dns": {
+        "Nameservers": [
+            "11.0.0.10"
+        ],
+        "Search": [
+            "svc.local"
+        ]
+    },
+    "ipam": {
+        "environment": "azure",
+        "routes": [
+            {
+                "GW": "192.168.1.2"
+            }
+        ],
+        "subnet": "192.168.1.0/24"
+    },
+    "master": "Ethernet",
+    "name": "l2bridge",
+    "type": "wincni.exe"
+}
